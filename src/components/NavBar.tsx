@@ -54,7 +54,7 @@ function NavBar() {
                             color: 'black',
                         }}
                     >
-                        📚 The Book Store
+                        📚 Books R Us™
                     </Typography>
                 </Link>
                 
@@ -75,6 +75,7 @@ function NavBar() {
                             component={Link}
                             href='/'
                             variant="text"
+                            sx={{ minWidth: '150px', textAlign: 'left', justifyContent: 'start' }}
                         >
                             Home
                         </Button>
@@ -91,15 +92,29 @@ function NavBar() {
                             </Button>
                         </MenuItem>
                     )}
-                    <MenuItem onClick={handleCloseNavMenu}>
-                        <Button
-                            component={Link}
-                            href='/sign-in'
-                            variant="text"
-                        >
-                            Sign In
-                        </Button>
-                    </MenuItem>
+                    {!isLoggedIn ? (
+                        <MenuItem onClick={handleCloseNavMenu}>
+                            <Button
+                                component={Link}
+                                href='/sign-in'
+                                variant="text"
+                            >
+                                Sign In
+                            </Button>
+                        </MenuItem>
+                    ) : (
+                        <MenuItem onClick={handleCloseNavMenu}>
+                            <Button
+                                component={Link}
+                                href="/sign-in"
+                                onClick={handleSignOut}
+                                variant="text"
+                            >
+                                Sign Out
+                            </Button>
+                        </MenuItem> 
+                    )}
+                    
                 </Menu>
                 </Box>
 

@@ -13,7 +13,7 @@ import '@fontsource/roboto/700.css';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "The Book Store",
+  title: "Books R Us",
   description: "The place for all your books",
 };
 
