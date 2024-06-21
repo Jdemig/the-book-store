@@ -33,7 +33,7 @@ export default function BookSearch({ handleAddBook }: BookSearchPropTypes) {
     }
 
     const handleOnBlur = () => {
-        // setIsDropdownVisible(false);
+        setIsDropdownVisible(false);
     }
 
     const handleOnFocus = () => {
@@ -60,6 +60,7 @@ export default function BookSearch({ handleAddBook }: BookSearchPropTypes) {
                 onBlur={handleOnBlur}
                 onFocus={handleOnFocus}
                 placeholder="Search for books..."
+                sx={{ borderColor: 'grey.300' }}
             />
             {isVisible && (
                 <Box sx={{ boxShadow: '1px solid grey', position: 'absolute', zIndex: 10, top: '48px', width: '100%', background: 'white', border: '1px solid', borderColor: 'grey.300', borderRadius: '6px', mt: 1, py: '8px' }}>
