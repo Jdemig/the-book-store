@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid';
 import { NAV_HEIGHT } from '@/constants';
 import BookSearch from '@/components/BookSearch';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
-import BookIcon from '@mui/icons-material/Book';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useRootStore } from '@/stores/react';
 import { observer } from 'mobx-react';
@@ -72,7 +71,6 @@ function MyLibrary() {
               </Box>
             </>
           )}
-          
         </Box>
     </Grid>
   );
