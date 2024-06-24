@@ -37,140 +37,140 @@ function NavBar() {
 
     return (
         <AppBar
-            position='static'
+            position='sticky'
             sx={{
                 backgroundColor: '#fff',
                 boxShadow: 'rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px',
             }}
         >
             <Container maxWidth='xl'>
-            <Toolbar disableGutters>
-                <Link href="/">
-                    <Typography
+                <Toolbar disableGutters>
+                    <Link href="/">
+                        <Typography
+                            sx={{
+                                fontWeight: 800,
+                                fontSize: 22,
+                                fontFamily: "'Inter', sans-serif",
+                                color: 'black',
+                            }}
+                        >
+                            📚 Books R Us™
+                        </Typography>
+                    </Link>
+                    
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Menu
+                        id='menu-appbar'
+                        anchorEl={anchorElNav}
+                        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+                        keepMounted
+                        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+                        open={Boolean(anchorElNav)}
+                        onClose={handleCloseNavMenu}
+                        sx={{ display: { xs: 'block', md: 'none' } }}
+                    >
+                        <MenuItem onClick={handleCloseNavMenu}>
+                            <Button
+                                onClick={handleCloseNavMenu}
+                                component={Link}
+                                href='/'
+                                variant="text"
+                                sx={{ minWidth: '150px', textAlign: 'left', justifyContent: 'start' }}
+                            >
+                                Home
+                            </Button>
+                        </MenuItem>
+                        {isLoggedIn && (
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <Button
+                                    onClick={handleCloseNavMenu}
+                                    component={Link}
+                                    href='/my-library'
+                                    variant="text"
+                                >
+                                    My Library
+                                </Button>
+                            </MenuItem>
+                        )}
+                        {!isLoggedIn ? (
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <Button
+                                    component={Link}
+                                    href='/sign-in'
+                                    variant="text"
+                                >
+                                    Sign In
+                                </Button>
+                            </MenuItem>
+                        ) : (
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <Button
+                                    component={Link}
+                                    href="/sign-in"
+                                    onClick={handleSignOut}
+                                    variant="text"
+                                >
+                                    Sign Out
+                                </Button>
+                            </MenuItem> 
+                        )}
+                        
+                    </Menu>
+                    </Box>
+
+                    <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                        <Button
+                            size='large'
+                            onClick={handleOpenNavMenu}
+                            sx={{ width: '32px', minWidth: '10px', p: 0 }}
+                        >
+                            <MenuIcon sx={{ width: '100%' }} />
+                        </Button>
+                    </Box>
+
+                    <Box
                         sx={{
-                            fontWeight: 800,
-                            fontSize: 22,
-                            fontFamily: "'Inter', sans-serif",
-                            color: 'black',
+                            flexGrow: 1,
+                            display: { xs: 'none', md: 'flex' },
+                            alignItems: 'center',
+                            justifyContent: 'right',
+                            textAlign: 'center',
                         }}
                     >
-                        📚 Books R Us™
-                    </Typography>
-                </Link>
-                
-                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                <Menu
-                    id='menu-appbar'
-                    anchorEl={anchorElNav}
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-                    keepMounted
-                    transformOrigin={{ vertical: 'top', horizontal: 'left' }}
-                    open={Boolean(anchorElNav)}
-                    onClose={handleCloseNavMenu}
-                    sx={{ display: { xs: 'block', md: 'none' } }}
-                >
-                    <MenuItem onClick={handleCloseNavMenu}>
-                        <Button
-                            onClick={handleCloseNavMenu}
-                            component={Link}
-                            href='/'
-                            variant="text"
-                            sx={{ minWidth: '150px', textAlign: 'left', justifyContent: 'start' }}
-                        >
-                            Home
-                        </Button>
-                    </MenuItem>
-                    {isLoggedIn && (
-                        <MenuItem onClick={handleCloseNavMenu}>
+                        {isLoggedIn && (
                             <Button
                                 onClick={handleCloseNavMenu}
                                 component={Link}
                                 href='/my-library'
                                 variant="text"
+                                sx={{ mr: 1 }}
                             >
                                 My Library
                             </Button>
-                        </MenuItem>
-                    )}
-                    {!isLoggedIn ? (
-                        <MenuItem onClick={handleCloseNavMenu}>
-                            <Button
-                                component={Link}
-                                href='/sign-in'
-                                variant="text"
-                            >
-                                Sign In
-                            </Button>
-                        </MenuItem>
-                    ) : (
-                        <MenuItem onClick={handleCloseNavMenu}>
+                        )}
+                        
+                    </Box>
+                    <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+                        {isLoggedIn ? (
                             <Button
                                 component={Link}
                                 href="/sign-in"
+                                variant="contained"
                                 onClick={handleSignOut}
-                                variant="text"
                             >
                                 Sign Out
                             </Button>
-                        </MenuItem> 
-                    )}
-                    
-                </Menu>
-                </Box>
-
-                <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-                    <Button
-                        size='large'
-                        onClick={handleOpenNavMenu}
-                        sx={{ width: '32px', minWidth: '10px', p: 0 }}
-                    >
-                        <MenuIcon sx={{ width: '100%' }} />
-                    </Button>
-                </Box>
-
-                <Box
-                    sx={{
-                        flexGrow: 1,
-                        display: { xs: 'none', md: 'flex' },
-                        alignItems: 'center',
-                        justifyContent: 'right',
-                        textAlign: 'center',
-                    }}
-                >
-                    {isLoggedIn && (
-                        <Button
-                            onClick={handleCloseNavMenu}
-                            component={Link}
-                            href='/my-library'
-                            variant="text"
-                            sx={{ mr: 1 }}
-                        >
-                            My Library
-                        </Button>
-                    )}
-                    
-                </Box>
-                <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-                    {isLoggedIn ? (
-                        <Button
-                            component={Link}
-                            href="/sign-in"
-                            variant="contained"
-                            onClick={handleSignOut}
-                        >
-                            Sign Out
-                        </Button>
-                    ) : (
-                        <Button
-                            component={Link}
-                            href="/sign-in"
-                            variant="contained"
-                        >
-                            Sign In
-                        </Button>
-                    )}
-                </Box>
-            </Toolbar>
+                        ) : (
+                            <Button
+                                component={Link}
+                                href="/sign-in"
+                                variant="contained"
+                            >
+                                Sign In
+                            </Button>
+                        )}
+                    </Box>
+                </Toolbar>
             </Container>
         </AppBar>
     );

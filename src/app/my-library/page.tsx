@@ -25,7 +25,7 @@ function MyLibrary() {
   }, [bookStore]);
   
   return (
-    <Grid container component="main" sx={{ minHeight: `calc(100vh - ${NAV_HEIGHT}px)`, pt: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <Grid container component="main" sx={{ minHeight: '100vh', pt: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <BookSearch handleAddBook={bookStore.addBook} />
 
         <Box sx={{ mt: 2, mb: 2, width: 400 }}>
